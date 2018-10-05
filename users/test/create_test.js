@@ -10,12 +10,12 @@ describe('Creating records', ()=>{
 
     joe.save()
       .then(()=>{
-        // it is saved b/c it is not new
+        //@ It is saved b/c it is not new
         const joeHasBeenSaved = !joe.isNew;
 
         assert(joeHasBeenSaved);
-        // If assert above take falsy value, exception will
-        // thrown and done() will never called
+        //@ If assert above take falsy value, exception will
+        //@ thrown and done() will never called
         done();
       });
 
