@@ -4,7 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha"
+    "//@": "not using mocha --watch, b/c it will wrap your code in IIFE and is incompatible w moogose",
+    "//@": "so we use nodemon instead:",
+    "//@":"",
+    "test": "nodemon --exec 'mocha -R min'",
+    "//@": "'-R min': use a Reporter call 'min', which will show a abbreviated vesion of test result"
   },
   "dependencies": {
     "mocha": "^5.2.0",
