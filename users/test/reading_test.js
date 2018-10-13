@@ -12,11 +12,12 @@ describe('Reading users out of the database', ()=>{
   //   joe.save().then(() => done());
   // });
 
+  //@ using async await
   beforeEach ( async () => {
     joe = new User( { name: 'Joe' })
     await joe.save()
-    console.log('xxxx saved', joe)
   })
+
 
   it('Finds all users with a name of Joe', done => {
 
