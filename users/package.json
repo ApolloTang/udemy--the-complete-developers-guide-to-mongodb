@@ -10,9 +10,9 @@
     "//@":  "                                                      ",
     "test": "nodemon --exec 'mocha -R min'",
     "//@":  "                                                      ",
-    "//@":  " in the above '-R min' mean use a Reporter call 'min',",
-    "//@":  " which will clear the console and show                ",
-    "//@":  " a abbreviated vesion of test result                  "
+    "//@":  " in the above '-R min' means use a Reporter call      ",
+    "//@":  " 'min', which will clear the console and show         ",
+    "//@":  " an abbreviated vesion of test result                 "
   },
   "dependencies": {
     "mocha": "^5.2.0",
