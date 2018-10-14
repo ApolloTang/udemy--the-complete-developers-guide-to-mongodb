@@ -19,9 +19,9 @@ describe('Reading users out of the database', ()=>{
   })
 
 
-  it('Finds all users with a name of Joe', done => {
+  it('Finds all users [type array] with a name of Joe', done => {
 
-    User.find({ name: 'Joe'}).then( user => {
+    User.find({ name: 'Joe'}).then( users => {  //@ [!] Find returns an array, b/c the result can be more then one
 
       // assert( user[0]._id === joe._id ) //@ <-- This will fail !!!
 
