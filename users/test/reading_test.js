@@ -23,10 +23,9 @@ describe('Reading users out of the database', ()=>{
 
     User.find({ name: 'Joe'}).then( users => {  //@ [!] Find returns an array, b/c the result can be more then one
 
-      // assert( user[0]._id === joe._id ) //@ <-- This will fail !!!
-
-      //@ To be able to compare with '===', _id must be parsed to string
-      assert( user[0]._id.toString() === joe._id.toString() );
+      // assert( users[0]._id === joe._id )     //@ <-- This will fail !!!
+                                                //@ comparing with '===', _id must be parsed to string
+      assert( users[0]._id.toString() === joe._id.toString() );
       done();
     });
 
@@ -36,7 +35,7 @@ describe('Reading users out of the database', ()=>{
 
     const user = await User.findOne( {_id: joe._id} );
     assert( user._id.toString() === joe._id.toString() );
-    // done() //@ <----------- don't use done because we are using async await
+    // done()     //@ <--------------- don't use done because we are using async await
 
   });
 
