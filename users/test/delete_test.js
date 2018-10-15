@@ -33,7 +33,7 @@ describe('Deleting a user', ()=>{
     let users = await User.find({name: 'Joe'})
     const usersDidCreate = users.length > 0
 
-    //remove a bunch of records with some given conditions
+    //@ Remove a bunch of records with some given conditions
     await User.deleteMany({name: 'Joe'})
 
     users = await User.find({name: 'Joe'})
@@ -43,23 +43,36 @@ describe('Deleting a user', ()=>{
 
   });
 
-  // it('Delete a user using model Class.findAndRemove( <<critiria>> )', async () => {
-  //
-  //   const userDidCreate = !!await User.findOne({ _id: joe._id})
-  //   await User.remove({_id: joe._id})
-  //   const userIsAbsence = !await User.findOne({ _id: joe._id})
-  //
-  //   assert( userDidCreate && userIsAbsence )
-  //
-  // });
-  //
-  // it('Delete a user using model Class.findByIdAndRemove()', async () => {
-  //
-  //   const userDidCreate = !!await User.findOne({ _id: joe._id})
-  //   await User.findByIdAndRemove( joe._id )
-  //   const userIsAbsence = !await User.findOne({ _id: joe._id})
-  //
-  //   assert( userDidCreate && userIsAbsence )
-  //
-  // });
+
+  it('Delete a user using model Class.findOneAndRemove( <<critiria>> )', async () => {
+
+    const idToSearch = joe.id
+
+    let user = await User.findOne({_id: idToSearch})
+    const userDidCreate = user !== null
+
+    await User.findOneAndRemove({_id: idToSearch})
+
+    user = await User.findOne({_id: idToSearch})
+    const userIsAbsence = user === null
+
+    assert( userDidCreate && userIsAbsence )
+
+  });
+
+  it('Delete a user using model Class.findByIdAndRemove()', async () => {
+
+    const idToSearch = joe.id
+
+    let user = await User.findOne({_id: idToSearch})
+    const userDidCreate = user !== null
+
+    await User.findByIdAndRemove(idToSearch)
+
+    user = await User.findOne({_id: idToSearch})
+    const userIsAbsence = user === null
+
+    assert( userDidCreate && userIsAbsence )
+
+  });
 });
