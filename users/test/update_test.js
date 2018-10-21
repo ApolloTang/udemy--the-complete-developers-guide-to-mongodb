@@ -1,11 +1,12 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-console.log('... In update_test.js')
+const FILENAME = __filename.slice(__dirname.length + 1);
 
-describe('Update a user', ()=>{
+describe(`[${FILENAME}] Update a user`, ()=>{
 
-  let joe;
+  let userInstance1;
+  let userInstance2;
 
   beforeEach ( async () => {
     userInstance1 = new User( { name: 'Joe' })
