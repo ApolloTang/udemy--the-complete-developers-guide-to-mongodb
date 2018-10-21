@@ -51,7 +51,9 @@ describe('Deleting a user', ()=>{
     let user = await User.findOne({_id: idToSearch})
     const userDidCreate = user !== null
 
-    await User.findOneAndRemove({_id: idToSearch})
+    //@ (node:55303) DeprecationWarning: collection.findAndModify is deprecated. Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead.
+    // await User.findOneAndRemove({_id: idToSearch}) //@ This is deprecated, the error message should be findAndRemove not findAndModify
+    await User.findOneAndDelete({_id: idToSearch})
 
     user = await User.findOne({_id: idToSearch})
     const userIsAbsence = user === null
@@ -59,6 +61,7 @@ describe('Deleting a user', ()=>{
     assert( userDidCreate && userIsAbsence )
 
   });
+
 
   it('Delete a user using model Class.findByIdAndRemove()', async () => {
 
@@ -75,4 +78,7 @@ describe('Deleting a user', ()=>{
     assert( userDidCreate && userIsAbsence )
 
   });
+
+
 });
+
