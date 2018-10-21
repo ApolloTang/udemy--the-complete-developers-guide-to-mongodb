@@ -4,19 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "//@":  " not using mocha --watch, b/c it will                 ",
-    "//@":  " wrap your code in IIFE and is incompatible w moogose.",
-    "//@":  " so we use nodemon instead:                           ",
-    "//@":  "                                                      ",
-    "test": "nodemon --exec 'mocha -R min'",
-    "//@":  "                                                      ",
-    "//@":  " in the above '-R min' means use a Reporter call      ",
-    "//@":  " 'min', which will clear the console and show         ",
-    "//@":  " an abbreviated vesion of test result                 "
+    "//@": " an abbreviated vesion of test result                 ",
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "dependencies": {
     "mocha": "^5.2.0",
-    "mongoose": "^5.2.17",
+    "mongoose": "^5.3.4",
     "nodemon": "^1.18.4"
   }
 }
