@@ -17,7 +17,7 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   })
 
 
-  it('Update with instance.set()', async () => {
+  it('Update with instance.set(key,value)', async () => {
 
     const newName = 'Mike'
     userInstance1.set('name', newName);
@@ -28,4 +28,17 @@ describe(`[${FILENAME}] Update a user`, ()=>{
 
   });
 
+
+  // it('Update with instance.update(object)', async () => { //@ instance.update does not work ??
+  it('Update with instance.set(object)', async () => {
+
+    const newName = 'Mike'
+    // userInstance1.update({'name': newName}); //@ instance.update does not work ??
+    userInstance1.set({'name': newName});
+    await userInstance1.save();
+
+    const usersFound = await User.findOne({ _id: userInstance1.id });
+    assert(usersFound.name === newName);
+
+  });
 });
