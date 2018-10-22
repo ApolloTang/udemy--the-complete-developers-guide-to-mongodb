@@ -36,10 +36,10 @@ describe(`[${FILENAME}] Update a user`, ()=>{
     //@ (node:61995) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
     //await userInstance1.update({'name': newName});
     await userInstance1.updateOne({'name': newName});
-    // await userInstance1.save(); //@ Notice that update does not require you to call save()
+    // await userInstance1.save(); //@ Notice <------ that update does not require you to call save()
 
-    const usersFound = await User.findOne({ _id: userInstance1.id });
-    assert(usersFound.name === newName);
+    const userFound = await User.findOne({ _id: userInstance1.id });
+    assert(userFound.name === newName);
 
   });
 
@@ -52,21 +52,35 @@ describe(`[${FILENAME}] Update a user`, ()=>{
     // await User.update( {_id: userInstance1.id}, {name: newName})
     await User.updateOne( {_id: userInstance1.id}, {name: newName});
 
-    const usersFound = await User.findOne({ _id: userInstance1.id });
-    assert(usersFound.name === newName);
+    const userFound = await User.findOne({ _id: userInstance1.id });
+    assert(userFound.name === newName);
 
   });
 
 
-  //
-  //
-  // it('Update with ModalClass.findOneAndUpdate()', async () => {
-  //
-  // })
-  //
-  //
-  // it('Udate with ModalClass.findByIdAndUpdate()', async () => {
-  //
-  // })
+  it('Update with ModalClass.findOneAndUpdate(<<critiria>>, <<document>>)', async () => {
+
+    const newName = 'Mike';
+
+    //@ (node:63683) DeprecationWarning: collection.findAndModify is deprecated. Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead.
+    //@ I think the above message is a mistake, see:
+    //@ https://github.com/Automattic/mongoose/issues/5616
+    await User.findOneAndUpdate( {_id: userInstance1.id}, {name: newName});
+
+    const userFound = await User.findOne({ _id: userInstance1.id });
+    assert(userFound.name === newName);
+
+  });
+
+
+  it('Udate with ModalClass.findByIdAndUpdate(<<critiria>>, <<document>>)', async () => {
+
+    const newName = 'Mike';
+    await User.findByIdAndUpdate( userInstance1._id, {name: newName});
+
+    const userFound = await User.findOne({ _id: userInstance1.id });
+    assert(userFound.name === newName);
+
+  });
 
 });
