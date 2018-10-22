@@ -29,13 +29,11 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   });
 
 
-  // it('Update with instance.update(object)', async () => { //@ instance.update does not work ??
   it('Update with instance.set(object)', async () => {
 
     const newName = 'Mike'
-    // userInstance1.update({'name': newName}); //@ instance.update does not work ??
-    userInstance1.set({'name': newName});
-    await userInstance1.save();
+    await userInstance1.update({'name': newName});
+    // await userInstance1.save(); //@ Notice that update does not require you to call save()
 
     const usersFound = await User.findOne({ _id: userInstance1.id });
     assert(usersFound.name === newName);
