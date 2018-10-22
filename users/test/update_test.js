@@ -29,14 +29,19 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   });
 
 
-  it('Update with instance.set(object)', async () => {
+  it('Update with instance.updateOne(object)', async () => {
 
     const newName = 'Mike'
-    await userInstance1.update({'name': newName});
+
+    //@ (node:61995) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+    //await userInstance1.update({'name': newName});
+    await userInstance1.updateOne({'name': newName});
     // await userInstance1.save(); //@ Notice that update does not require you to call save()
 
     const usersFound = await User.findOne({ _id: userInstance1.id });
     assert(usersFound.name === newName);
 
   });
+
+
 });
