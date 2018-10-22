@@ -44,4 +44,27 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   });
 
 
+  it('Update with ModalClass.update()', async () => {
+
+    const newName = 'Mike';
+
+    await User.update( {_id: userInstance1.id}, {name: newName})
+
+    const usersFound = await User.findOne({ _id: userInstance1.id });
+    assert(usersFound.name === newName);
+
+  });
+
+
+  //
+  //
+  // it('Update with ModalClass.findOneAndUpdate()', async () => {
+  //
+  // })
+  //
+  //
+  // it('Udate with ModalClass.findByIdAndUpdate()', async () => {
+  //
+  // })
+
 });
