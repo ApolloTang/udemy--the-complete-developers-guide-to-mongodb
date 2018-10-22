@@ -44,7 +44,7 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   });
 
 
-  it('Update with ModalClass.update()', async () => {
+  it('Update with ModalClass.update(<<critiria>>, <<document>>)', async () => {
 
     const newName = 'Mike';
 
