@@ -9,10 +9,10 @@ describe(`[${FILENAME}] Update a user`, ()=>{
   let userInstance2;
 
   beforeEach ( async () => {
-    userInstance1 = new User( { name: 'Joe' })
+    userInstance1 = new User( { name: 'Joe', postCount: 2 });
     await userInstance1.save()
 
-    userInstance2 = new User( { name: 'Kate' })
+    userInstance2 = new User( { name: 'Kate', postCount: 2 });
     await userInstance2.save()
   })
 
