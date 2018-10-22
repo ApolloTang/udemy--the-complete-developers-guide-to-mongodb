@@ -48,7 +48,9 @@ describe(`[${FILENAME}] Update a user`, ()=>{
 
     const newName = 'Mike';
 
-    await User.update( {_id: userInstance1.id}, {name: newName})
+    //@ (node:63212) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+    // await User.update( {_id: userInstance1.id}, {name: newName})
+    await User.updateOne( {_id: userInstance1.id}, {name: newName});
 
     const usersFound = await User.findOne({ _id: userInstance1.id });
     assert(usersFound.name === newName);
